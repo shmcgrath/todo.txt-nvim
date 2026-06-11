@@ -127,5 +127,52 @@ function! todo#txt#prioritize_add_action(priority)
     execute 's/^\(([a-zA-Z]) \)\?/(' . a:priority . ') /'
 endfunction
 
+function! todo#txt#new_todo_item()
+    let l:date = strftime('%Y-%m-%d')
+    let l:lnum = line('.')
+
+    let l:task = input('Task: ')
+    if empty(l:task)
+        return
+    endif
+
+    let l:priority = input('Priority (A-Z, empty = none): ')
+    let l:project = input('Project (+ empty = none): ')
+    let l:context = input('Context (@ empty = none): ')
+    let l:due = input('Due date (YYYY-MM-DD, empty = none): ')
+
+    let l:line = ''
+
+    " priority (optional)
+    if !empty(l:priority)
+        let l:line .= '(' . l:priority . ') '
+    endif
+
+    " creation date always
+    let l:line .= l:date . ' '
+
+    " task (required)
+    let l:line .= l:task
+
+    " optional project
+    if !empty(l:project)
+        let l:line .= ' +' . l:project
+    endif
+
+    " optional context
+    if !empty(l:context)
+        let l:line .= ' @' . l:context
+    endif
+
+    " optional due date
+    if !empty(l:due)
+        let l:line .= ' due:' . l:due
+    endif
+
+    call append(l:lnum, l:line)
+    call cursor(l:lnum + 1, 0)
+
+endfunction
+
 " Modeline {{{1
 " vim: ts=8 sw=4 sts=4 et foldenable foldmethod=marker foldcolumn=1

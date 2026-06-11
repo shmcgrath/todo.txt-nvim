@@ -41,6 +41,9 @@ vnoremap <script> <silent> <buffer> <localleader>b :call todo#txt#prioritize_add
 nnoremap <script> <silent> <buffer> <localleader>c :call todo#txt#prioritize_add('C')<CR>
 vnoremap <script> <silent> <buffer> <localleader>c :call todo#txt#prioritize_add('C')<CR>
 
+" New task {{{2
+nnoremap <script> <silent> <buffer> <localleader>n :call todo#txt#new_todo_item()<CR>
+
 " Insert date {{{2
 nnoremap <script> <silent> <buffer> <localleader>d :call todo#txt#replace_date()<CR>
 vnoremap <script> <silent> <buffer> <localleader>d :call todo#txt#replace_date()<CR>
