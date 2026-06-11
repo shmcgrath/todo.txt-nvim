@@ -42,7 +42,6 @@ nnoremap <script> <silent> <buffer> <localleader>c :call todo#txt#prioritize_add
 vnoremap <script> <silent> <buffer> <localleader>c :call todo#txt#prioritize_add('C')<CR>
 
 " Insert date {{{2
-inoremap <script> <silent> <buffer> date<Tab> <C-R>=strftime("%Y-%m-%d")<CR>
 nnoremap <script> <silent> <buffer> <localleader>d :call todo#txt#replace_date()<CR>
 vnoremap <script> <silent> <buffer> <localleader>d :call todo#txt#replace_date()<CR>
 
